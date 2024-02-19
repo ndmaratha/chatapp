@@ -1,8 +1,9 @@
 import { Outlet, createBrowserRouter } from "react-router-dom";
 import LoginPage from "./Component/Authentication/LoginPage";
 import SignUpPage from "./Component/Authentication/SignUpPage";
-import Body from "./Component/Body";
+import HomePage from "./pages/HomePage";
 import "./App.css";
+import ChatPage from "./pages/ChatPage";
 function App() {
 	return (
 		<div className="App">
@@ -16,16 +17,13 @@ export const appRouter = createBrowserRouter([
 		element: <App />,
 		children: [
 			{
-				path: "/login",
-				element: <LoginPage />,
-			},
-			{
 				path: "/",
-				element: <Body />,
+				element: <HomePage />,
 			},
+
 			{
-				path: "/signup",
-				element: <SignUpPage />,
+				path: "/chats",
+				element: <ChatPage />,
 			},
 		],
 	},
