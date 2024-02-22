@@ -5,8 +5,8 @@ import { VStack } from "@chakra-ui/layout";
 import { useState } from "react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
-import { useHistory, useNavigate } from "react-router-dom";
-import { ChatState } from "../../Context/ChatProvider";
+import { useNavigate } from "react-router-dom";
+//import { ChatState } from "../../Context/ChatProvider";
 
 const Login = () => {
 	const [show, setShow] = useState(false);
@@ -17,7 +17,7 @@ const Login = () => {
 	const [loading, setLoading] = useState(false);
 
 	const navigate = useNavigate();
-	const { setUser } = ChatState();
+	//const { setUser } = ChatState();
 
 	const submitHandler = async () => {
 		setLoading(true);
@@ -41,7 +41,7 @@ const Login = () => {
 			};
 
 			const { data } = await axios.post(
-				"http://localhost:3000/api/user/login",
+				"http://localhost:5000/api/user/login",
 				{ email, password },
 				config
 			);
@@ -53,7 +53,7 @@ const Login = () => {
 				isClosable: true,
 				position: "bottom",
 			});
-			setUser(data);
+			//setUser(data);
 			localStorage.setItem("userInfo", JSON.stringify(data));
 			setLoading(false);
 			navigate("/chats");
